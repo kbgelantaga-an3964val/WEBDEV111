@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Events</title>
+    <style>
+        /* 1. Reset & Theme Setup */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --magenta: #ff00ff;
+            --cyan: #00ffff;
+            --yellow: #ffff00;
+            --border: 4px solid #000;
+            --shadow: 8px 8px 0px #000;
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background-color: var(--cyan);
+            background-image: radial-gradient(#0000001a 1.5px, transparent 0);
+            background-size: 24px 24px;
+            color: #000;
+        }
+
+        /* 2. Header & Hero */
+        header {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: var(--border);
+        }
+
+        .hero {
+            background-color: var(--magenta);
+            padding: 60px 5%;
+            border-bottom: var(--border);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: white;
+            line-height: 0.9;
+            -webkit-text-stroke: 2px #000;
+            text-transform: uppercase;
+        }
+
+        /* 3. Event Cards */
+        .grid {
+            padding: 80px 5% 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: 0.1s;
+            overflow: hidden;
+        }
+
+        .card:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px #000; }
+
+        .card img { width: 100%; height: 200px; object-fit: cover; border-bottom: var(--border); }
+        .card-info { padding: 20px; }
+
+        /* 4. Ticket Modal */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal {
+            background: white;
+            border: var(--border);
+            box-shadow: 15px 15px 0px #000;
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .modal h2 { text-transform: uppercase; margin-bottom: 20px; }
+
+        .ticket-option {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: inherit;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: var(--border);
+            cursor: pointer;
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .vip { background: var(--yellow); }
+        .gen { background: white; }
+
+        .cancel-btn {
+            background: transparent;
+            border: none;
+            margin-top: 15px;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.8rem;
+        }
+
+        /* 5. Footer */
+        footer {
+            background: white;
+            border-top: var(--border);
+            padding: 30px 5%;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>NEXUS</div>
+        <div style="font-size: 0.8rem;">EVENTS | <a href="index.html" class="footer-link">TICKETS </a>| <a href="recipt.html" class="footer-link">VENUE </a></div>
+    </header>
+
+    <section class="hero">
+        <h1>BEYOND<br>THE<br>NEXUS.</h1>
+    </section>
+
+    <main class="grid">
+        <div class="card" onclick="openModal('Cyberpunk Rave')">
+            <img src="6719a5a9dcf7f1af2c1a0855_231231_ALB_White_Party-271 (1).jpg" alt="Rave">
+            <div class="card-info"><h3>Cyberpunk Rave</h3><p>Live @ The Dock</p></div>
+        </div>
+
+        <div class="card" onclick="openModal('Neon Rooftop')">
+            <img src="images.jpg" alt="Rooftop">
+            <div class="card-info"><h3>Neon Rooftop</h3><p>Summer Vibes</p></div>
+        </div>
+
+        <div class="card" onclick="openModal('Techno Basement')">
+            <img src="nexus-club-pantin.jpg" alt="Techno">
+            <div class="card-info"><h3>Techno Basement</h3><p>Dark Session</p></div>
+        </div>
+    </main>
+
+    <div id="overlay">
+        <div class="modal">
+            <h2 id="event-title">EVENT NAME</h2>
+            <p style="font-size: 0.7rem; margin-bottom: 20px;">SELECT TICKET:</p>
+            
+            <button class="ticket-option vip" onclick="buy('VIP')">VIP PASS - $200</button>
+            <button class="ticket-option gen" onclick="buy('General')">GEN AD - $80</button>
+            
+            <button class="cancel-btn" onclick="closeModal()">CANCEL</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>NEXUS EVENTS</p>
+    </footer>
+
+    <script>
+        const overlay = document.getElementById('overlay');
+        const title = document.getElementById('event-title');
+
+        function openModal(eventName) {
+            title.innerText = eventName;
+            overlay.style.display = 'flex';
+        }
+
+        function closeModal() {
+            overlay.style.display = 'none';
+        }
+
+        function buy(type) {
+            alert(type + " ticket added to cart!");
+            closeModal();
+        }
+
+        // Close modal if clicking outside the box
+        window.onclick = function(event) {
+            if (event.target == overlay) closeModal();
+        }
+    </script>
+
+</body>
+</html>
