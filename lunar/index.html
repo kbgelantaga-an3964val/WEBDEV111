@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite Prep | Home</title>
+	<style>
+	* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; }
+
+.layout-grid {
+    display: grid;
+    grid-template-rows: 80px 1fr 400px; /* Header, Content, Video Footer */
+    min-height: 100vh;
+}
+
+
+.header-area {
+    background: #fff;
+    border-bottom: 2px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+.logo { font-weight: bold; font-size: 1.5rem; letter-spacing: 2px; }
+.top-nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 600; }
+.sign-up-toggle { background: #e67e22; color: #fff; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; }
+
+
+.video-footer {
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid #1a1a1a;
+}
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.video-overlay {
+    position: relative;
+    z-index: 2;
+    height: 500%;
+    background: rgba(0,0,0,0.4); /* Darkens video to make text readable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 2rem;
+}
+</style>
+</head>
+<body>
+
+    <div class="layout-grid">
+        <header class="header-area">
+		    <h1><img src="download.png" width=100 height=80></h1>
+            <div style="color: #e67e22;"class="logo">LUNA VISTA RESORT</div>
+            <nav class="top-nav">
+                <a style="color: #e67e22;"href="index.html">HOME</a>
+                <a style="color: #e67e22;"href="register.html">GALLERY</a>
+                <a style="color: #e67e22;"href="recipt.html">ABOUT US</a>
+                <a style="color: #e67e22;"href="billing.html" class="nav-link active"><button class="sign-up-toggle" onclick="toggleDrawer()">BOOK UP</button></a>
+            </nav>
+        </header>
+
+
+        <footer class="video-footer">
+            <div class="video-overlay">
+                <h3></h3>
+            </div>
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="stock-footage-bora-bora-french-polynesia-establishing-drone-shot-of-coastal-village-and-tropical-resort.webm" type="video/mp4"width=400 height=500>
+               
+            </video>
+        </footer>
+    </div>
+
+</body>
+</html>

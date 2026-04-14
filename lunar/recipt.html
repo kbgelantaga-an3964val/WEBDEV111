@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Luna Vista Resort</title>
+    <style>
+        /* 1. Layout Structure (Matching your established grid) */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Georgia', serif; background-color: #fdfaf6; color: #333; }
+
+        .wrapper {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: 100px 1fr 60px;
+            min-height: 100vh;
+        }
+
+        /* 2. Header (Logo & Connections) */
+        .header {
+            grid-area: header;
+            background: #FFD952;
+            border-bottom: 2px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo { font-size: 1.6rem; font-weight: bold; color: #2c3e50; letter-spacing: 2px; }
+
+        /* 3. Sidebar (Navigation to other HTML files) */
+        .sidebar {
+            grid-area: sidebar;
+            background: #fff;
+            border-right: 1px solid #eee;
+            padding: 30px 20px;
+        }
+        .nav-menu { list-style: none; }
+        .nav-menu li { margin-bottom: 15px; }
+        .nav-menu a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover { background: #f4f7f6; color: #e67e22; }
+
+        /* 4. Main Content Area */
+        .main-content {
+            grid-area: main;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .hero-section {
+            background: #2c3e50;
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* 5. Footer */
+        .footer {
+            grid-area: footer;
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header class="header">
+        <div class="logo">LUNA VISTA RESORT</div>
+        
+    </header>
+
+    <aside class="sidebar">
+        <ul class="nav-menu">
+            
+            <li><a href="index.html">Menu</a></li>
+            <li><a href="billing.html">BOOK UP</a></li>
+            <li><a href="recipt.html" style="color: #e67e22;">About Our Resort</a></li>
+            <li><a style="color: #e67e22;"href="billing.html" class="nav-link active"><button class="sign-up-toggle" onclick="toggleDrawer()">Go back</button></a><li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <section class="hero-section">
+            <h1>Our Story</h1>
+            <p>Founded in 2026, Luna Vista was built on the dream of merging modern luxury with the raw beauty of the Palawan coastline.</p>
+        </section>
+
+        <div class="about-grid">
+            <div class="info-card">
+                <h3>Our Mission</h3>
+                <hr><br>
+                <p>To provide an unparalleled sanctuary for travelers seeking peace, personalized service, and sustainable luxury. We believe every guest deserves a view of the moon over the vista.</p>
+            </div>
+            <div class="info-card">
+                <h3>Sustainable Luxury</h3>
+                <hr><br>
+                <p>Luna Vista operates with a zero-plastic policy and utilizes solar-powered energy for all our beachfront villas to ensure the environment remains as pristine as our service.</p>
+            </div>
+        </div>
+
+        <section style="margin-top: 40px;">
+            <h3>Meet the Team</h3>
+            <p>Our dedicated staff is available 24/7 to ensure your stay is perfect. From our world-class chefs to our local island guides, we are here for you.</p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        &copy; 2026 Luna Vista Resort | Designed for FreshBite Prep Systems
+    </footer>
+</div>
+
+</body>
+</html>
